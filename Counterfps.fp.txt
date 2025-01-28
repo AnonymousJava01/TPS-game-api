@@ -3608,7 +3608,7 @@ button.BorderColor3 = Color3.fromRGB(0, 0, 0)
 button.BorderSizePixel = 0
 button.Position = UDim2.new(0, 10, 0, 10)
 button.Size = UDim2.new(0, 50, 0, 50)
-button.Image = "rbxassetid://17576103507"
+button.Image = ""
 button.ScaleType = Enum.ScaleType.Crop
 
 local UICorner = Instance.new("UICorner")
