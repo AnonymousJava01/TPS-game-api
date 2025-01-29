@@ -1,3 +1,8 @@
+repeat task.wait() until game:IsLoaded()
+
+local TimeStart = tick()
+
+
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -184,26 +189,8 @@ Tabs.Main:AddParagraph({
         Content = ""
     })
  
- local Input = Tabs.Main:AddInput("Input", {
-        Title = "Money Amount",
-        Default = "Default",
-        Numeric = true,
-        Finished = false,
-        Placeholder = "MoneyGiver",
-        Callback = function(Value)
-            MoneyAmount = Value
-        end
-})
-
-Tabs.Main:AddButton({
-        Title = "Give Money",
-        Description = "",
-        Callback = function()
-            game:GetService('ReplicatedStorage').events.purchase:FireServer('Atlantean Jetski', 'Boat', nil, MoneyAmount)
-        end
-})
-
-Tabs.Main:AddButton({
+ 
+ Tabs.Main:AddButton({
             Title = "Infinite Yield",
             Description = "Best script for all games",
             Callback = function()
@@ -1461,7 +1448,7 @@ local Locations = {
     ["The Depths"] = CFrame.new(502, -707, 1234),
     ["Anchient Isle"] = CFrame.new(6056, 196, 283),
     ["Grand Reef"] = CFrame.new(-3596, 154, 522),
-    ["Atlantis"] = CFrame.new(-4300, -580, 1800)
+    ["Atlantis"] = CFrame.new(-4300, -580, 1800),
 }
 
 local subLocations = {
@@ -1473,7 +1460,7 @@ local subLocations = {
     ["Vertigo Gate"] = CFrame.new(16, -706, 1225),
     ["Input Abyssal Relic"] = CFrame.new(1206, -715, 1315),
     ["Input Hexed Relic"] = CFrame.new(1050, -631, 1318),
-    ["Input Relic in New Rod"] = CFrame.new(2730, 130, -825)
+    ["Input Relic in New Rod"] = CFrame.new(2730, 130, -825),
 }
 
 local NPCLocations = {
@@ -1482,7 +1469,7 @@ local NPCLocations = {
     ["Merchant"] = CFrame.new(467, 151, 231),
     ["Merlin (Relic Seller)"] = CFrame.new(-932, 224, -988),
     ["Lantern Guy"] = CFrame.new(-39, -247, 199),
-    ["Jack Marrow"] = CFrame.new(-2825, 214, 1516)
+    ["Jack Marrow"] = CFrame.new(-2825, 214, 1516),
 }
 
 local RodLocation = {
@@ -1510,7 +1497,7 @@ local RodLocation = {
     ["Abyssal Specter Rod(1M)"] = CFrame.new(-3804, -567, 1870),
     ["Poseidon Rod(1,55M)"] = CFrame.new(-4086, -559, 895),
     ["Zeus Rod(1,7M)"] = CFrame.new(-4272, -629, 2665),
-    ["Kraken Rod(1,33M)"] = CFrame.new(-4415, -997, 2055)
+    ["Kraken Rod(1,33M)"] = CFrame.new(-4415, -997, 2055),
 }
 
 local TotemLocation = {
@@ -1522,7 +1509,7 @@ local TotemLocation = {
     ["Meteor Totem(75k)"] =CFrame.new(-1948, 274, 228),
     ["Avalanche Totem(150K)"] = CFrame.new(19709, 469, 6057),
     ["Poseidon Warth Totem(1,5M)"] = CFrame.new(-3953, -556, 853),
-    ["Zeus Strom Totem(1,5M)"] = CFrame.new(-4325, -630, 2687)
+    ["Zeus Strom Totem(1,5M)"] = CFrame.new(-4325, -630, 2687),
 }
 
 local CastLocation = {
@@ -1545,7 +1532,7 @@ local CastLocation = {
     ["Northern Cave"] = CFrame.new(19841, 439, 5613),
     ["Northern Canal"] = CFrame.new(20295, 272, 5516),
     ["Grand Reef Ocean"] = CFrame.new(-3589, 132, 572),
-    ["Kraken Pool"] = CFrame.new(-4295, -991, 1792)
+    ["Kraken Pool"] = CFrame.new(-4295, -991, 1792),
 }
 
 local MountainLocation = {
@@ -1557,7 +1544,7 @@ local MountainLocation = {
     ["Anchient Isle Button"] = CFrame.new(5506, 147, -315),
     ["Snowcap Button"] = CFrame.new(2930, 281, 2594),
     ["Roslitbay Button"] = CFrame.new(-1715, 149, 737),
-    ["Forsaken Button"] = CFrame.new(-2566, 181, 1353)
+    ["Forsaken Button"] = CFrame.new(-2566, 181, 1353),
 }
 
 local LeversLocation = {
@@ -1580,7 +1567,7 @@ local AtlanteanLocation = {
     ["Lever 2 HOZ"] = CFrame.new(-2551, 150, 1667),
     ["Lever 3 HOZ"] = CFrame.new(-2729, 168, 1730),
     ["Lever 4 HOZ"] = CFrame.new(-2881, 314, 1605),
-    ["Lever 5 HOZ"] = CFrame.new(-2835, 131, 1510)
+    ["Lever 5 HOZ"] = CFrame.new(-2835, 131, 1510),
 }
 
 local AtlanteanLocationNames = {}
@@ -3394,17 +3381,6 @@ Tabs.Server:AddButton({
 end
         
 
-local getLogo = function()
-    pcall(function()
-        if getcustomasset and writefile then
-            writefile("HutaoIcon.png", game:HttpGet("https://github.com/AnonymousJava01/TPS-game-api/blob/main/ic_launcher.png"))
-            return getcustomasset("HutaoIcon.png")
-        else
-            return ""
-        end
-    end)
-    return ""
-end
 
 local gui = Instance.new("ScreenGui")
 gui.Name = "Gui"
@@ -3418,7 +3394,7 @@ button.BorderColor3 = Color3.fromRGB(0, 0, 0)
 button.BorderSizePixel = 0
 button.Position = UDim2.new(0, 10, 0, 10)
 button.Size = UDim2.new(0, 50, 0, 50)
-button.Image = getLogo() or ""
+button.Image = ""
 button.ScaleType = Enum.ScaleType.Crop
 
 local UICorner = Instance.new("UICorner")
