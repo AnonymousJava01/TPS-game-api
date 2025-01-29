@@ -1466,7 +1466,8 @@ local Locations = {
     ["Forsaken Shores"] = CFrame.new(-2655, 183, 1671),
     ["The Depths"] = CFrame.new(502, -707, 1234),
     ["Anchient Isle"] = CFrame.new(6056, 196, 283),
-    ["Grand Reef"] = CFrame.new(-3596, 154, 522)
+    ["Grand Reef"] = CFrame.new(-3596, 154, 522),
+    ["Atlantis"] = CFrame.new(-4300, -580, 1800)
 }
 
 local subLocations = {
@@ -1508,7 +1509,14 @@ local RodLocation = {
     ["Arctic Rod(25K)"] = CFrame.new(19580, 133, 5303),
     ["Summit Rod(300K)"] = CFrame.new(20211, 737, 5708),
     ["Avalanche Rod(35K)"] = CFrame.new(19769, 414, 5415),
-    ["Heavenly Rod(1,75M)"] = CFrame.new(20025, -466, 7114)
+    ["Heavenly Rod(1,75M)"] = CFrame.new(20025, -466, 7114),
+    ["Depthseeker Rod(125K)"] = CFrame.new(-4465, -604, 1874),
+    ["Champions Rod(1M)"] = CFrame.new(-4277, -606, 1838),
+    ["Tempest Rod(1,85M)"] = CFrame.new(-4928, -595, 1857),
+    ["Abyssal Specter Rod(1M)"] = Cframe.new(-3804, -567, 1870),
+    ["Poseidon Rod(1,55M)"] = CFrame.new(-4086, -559, 895),
+    ["Zeus Rod(1,7M)"] = CFrame.new(-4272, -629, 2665),
+    ["Kraken Rod(1,33M)"] = CFrame.new(-4415, -997, 2055)
 }
 
 local TotemLocation = {
@@ -1518,7 +1526,9 @@ local TotemLocation = {
     ["Aurora Totem(Luck)"] = CFrame.new(-1811, -137, -3282),
     ["Tempest (Rainy)"] = CFrame.new(36, 135, 1946),
     ["Meteor Totem(75k)"] =CFrame.new(-1948, 274, 228),
-    ["Avalanche Totem(150K)"] = CFrame.new(19709, 469, 6057)
+    ["Avalanche Totem(150K)"] = CFrame.new(19709, 469, 6057),
+    ["Poseidon Warth Totem(1,5M)"] = CFrame.new(-3953, -556, 853),
+    ["Zeus Strom Totem(1,5M)"] = CFrame.new(-4325, -630, 2687)
 }
 
 local CastLocation = {
@@ -1540,7 +1550,8 @@ local CastLocation = {
     ["Anchient WaterFall"] = CFrame.new(5808, 136, 408),
     ["Northern Cave"] = CFrame.new(19841, 439, 5613),
     ["Northern Canal"] = CFrame.new(20295, 272, 5516),
-    ["Grand Reef Ocean"] = CFrame.new(-3589, 132, 572)
+    ["Grand Reef Ocean"] = CFrame.new(-3589, 132, 572),
+    ["Kraken Pool"] = CFrame.new(-4295, -991, 1792)
 }
 
 local MountainLocation = {
@@ -1564,6 +1575,24 @@ local LeversLocation = {
     ["Lever 5"] = CFrame.new(20194, 854, 5645),
     ["Lever 6"] = CFrame.new(19965, 587, 5573),
 }
+
+local AtlantisLocation = {
+    ["The Zeus Trial"] = CFrame.new(-4295, -583, 2021),
+    ["Poseidon Temple"] = CFrame.new(-4299, -604, 1587),
+    ["Ethereal Abyss"] = CFrame.new(-4107, -603, 1823),
+    ["Sunken Depths"] = CFrame.new(-4606, -594, 1843),
+    ["Sunken Sigil"] = CFrame.new(-5167, -680, 1710),
+    ["Lever 1 HOZ"] = CFrame.new(-2522, 138, 1593),
+    ["Lever 2 HOZ"] = CFrame.new(-2551, 150, 1667),
+    ["Lever 3 HOZ"] = CFrame.new(-2729, 168, 1730),
+    ["Lever 4 HOZ"] = CFrame.new(-2881, 314, 1605),
+    ["Lever 5 HOZ"] = CFrame.new(-2835, 131, 1510),
+}
+
+local AtlantisLocationNames = {}
+for name in pairs(AtlantisLocation) do
+    table.insert(AtlantisLocationNames, name)
+end
 
 local LeversLocationNames = {}
 for name in pairs(LeversLocation) do
@@ -1849,6 +1878,31 @@ Tabs.Event:AddButton({
     local LeversLoc = LeversLocation[selectedLocation]
     if LeversLoc then
         TeleportPlayer(LeversLoc) 
+    else 
+
+    end
+            end
+        })
+        
+                local space = Tabs.Event:AddSection("")
+        
+     local AtlantisDD = Tabs.Event:AddDropdown("TPAtlantis", {
+    Title = "Teleport to Atlantis",
+    Values = AtlantisLocationNames,
+    Multi = false,
+    Default = "Select Zone",
+})
+
+
+
+Tabs.Event:AddButton({
+    Title = "Teleport to selected Atlantis Location",
+    Description = "",
+    Callback = function()
+    local selectedLocation = AtlantisDD.Value
+    local AtlantisLoc = AtlantisLocation[selectedLocation]
+    if AtlantisLoc then
+        TeleportPlayer(AtlantisLoc) 
     else 
 
     end
