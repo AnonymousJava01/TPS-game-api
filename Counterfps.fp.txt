@@ -189,6 +189,25 @@ Tabs.Main:AddParagraph({
         Content = ""
     })
  
+ local Input = Tabs.Main:AddInput("Input", {
+        Title = "Money Amount",
+        Default = "Default",
+        Numeric = true,
+        Finished = false,
+        Placeholder = "MoneyGiver",
+        Callback = function(Value)
+            MoneyAmount = Value
+        end
+})
+
+Tabs.Main:AddButton({
+        Title = "Give Money",
+        Description = "",
+        Callback = function()
+            game:GetService('ReplicatedStorage').events.purchase:FireServer('Atlantean Jetski', 'Boat', nil, MoneyAmount)
+        end
+})
+
 Tabs.Main:AddButton({
             Title = "Infinite Yield",
             Description = "Best script for all games",
@@ -1493,7 +1512,7 @@ local RodLocation = {
     ["Depthseeker Rod(125K)"] = CFrame.new(-4465, -604, 1874),
     ["Champions Rod(1M)"] = CFrame.new(-4277, -606, 1838),
     ["Tempest Rod(1,85M)"] = CFrame.new(-4928, -595, 1857),
-    ["Abyssal Specter Rod(1M)"] = Cframe.new(-3804, -567, 1870),
+    ["Abyssal Specter Rod(1M)"] = CFrame.new(-3804, -567, 1870),
     ["Poseidon Rod(1,55M)"] = CFrame.new(-4086, -559, 895),
     ["Zeus Rod(1,7M)"] = CFrame.new(-4272, -629, 2665),
     ["Kraken Rod(1,33M)"] = CFrame.new(-4415, -997, 2055)
