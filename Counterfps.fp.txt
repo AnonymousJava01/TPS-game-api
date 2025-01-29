@@ -189,25 +189,6 @@ Tabs.Main:AddParagraph({
         Content = ""
     })
  
- local Input = Tabs.Main:AddInput("Input", {
-        Title = "Money Amount",
-        Default = "Default",
-        Numeric = true,
-        Finished = false,
-        Placeholder = "MoneyGiver",
-        Callback = function(Value)
-            MoneyAmount = Value
-        end
-})
-
-Tabs.Main:AddButton({
-        Title = "Give Money",
-        Description = "",
-        Callback = function()
-            game:GetService('ReplicatedStorage').events.purchase:FireServer('Atlantean Jetski', 'Boat', nil, MoneyAmount)
-        end
-})
-
 Tabs.Main:AddButton({
             Title = "Infinite Yield",
             Description = "Best script for all games",
@@ -215,8 +196,7 @@ Tabs.Main:AddButton({
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
             end
         })
-        
-           
+                   
 Tabs.Main:AddButton({
         Title = "Copy Discord Invite (for updates)",
         Callback = function()
