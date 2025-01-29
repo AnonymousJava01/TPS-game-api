@@ -1576,7 +1576,7 @@ local LeversLocation = {
     ["Lever 6"] = CFrame.new(19965, 587, 5573),
 }
 
-local AtlantisLocation = {
+local AtlanteanLocation = {
     ["The Zeus Trial"] = CFrame.new(-4295, -583, 2021),
     ["Poseidon Temple"] = CFrame.new(-4299, -604, 1587),
     ["Ethereal Abyss"] = CFrame.new(-4107, -603, 1823),
@@ -1586,12 +1586,12 @@ local AtlantisLocation = {
     ["Lever 2 HOZ"] = CFrame.new(-2551, 150, 1667),
     ["Lever 3 HOZ"] = CFrame.new(-2729, 168, 1730),
     ["Lever 4 HOZ"] = CFrame.new(-2881, 314, 1605),
-    ["Lever 5 HOZ"] = CFrame.new(-2835, 131, 1510),
+    ["Lever 5 HOZ"] = CFrame.new(-2835, 131, 1510)
 }
 
-local AtlantisLocationNames = {}
-for name in pairs(AtlantisLocation) do
-    table.insert(AtlantisLocationNames, name)
+local AtlanteanLocationNames = {}
+for name in pairs(AtlanteanLocation) do
+    table.insert(AtlanteanLocationNames, name)
 end
 
 local LeversLocationNames = {}
@@ -1886,9 +1886,9 @@ Tabs.Event:AddButton({
         
                 local space = Tabs.Event:AddSection("")
         
-     local AtlantisDD = Tabs.Event:AddDropdown("TPAtlantis", {
+     local AtlanteanDD = Tabs.Event:AddDropdown("TPAtlantean", {
     Title = "Teleport to Atlantis",
-    Values = AtlantisLocationNames,
+    Values = AtlanteanLocationNames,
     Multi = false,
     Default = "Select Zone",
 })
@@ -1899,10 +1899,10 @@ Tabs.Event:AddButton({
     Title = "Teleport to selected Atlantis Location",
     Description = "",
     Callback = function()
-    local selectedLocation = AtlantisDD.Value
-    local AtlantisLoc = AtlantisLocation[selectedLocation]
-    if AtlantisLoc then
-        TeleportPlayer(AtlantisLoc) 
+    local selectedLocation = AtlanteanDD.Value
+    local AtlanteanLoc = AtlanteanLocation[selectedLocation]
+    if AtlanteanLoc then
+        TeleportPlayer(AtlanteanLoc) 
     else 
 
     end
@@ -3401,12 +3401,15 @@ end
         
 
 local getLogo = function()
-    if getcustomasset and writefile then
-        writefile("ic_launcher.png", game:HttpGet("https://cdn.discordapp.com/attachments/1212732144065974302/1333990088195051652/ic_launcher.png?ex=679ae695&is=67999515&hm=2d946522acad68c350c6509b4c4d90c47a32326734a3747b895853eea5fe339e&"))
-        return getcustomasset("ic_launcher.png")
-    else
-        return ""
-    end
+    pcall(function()
+        if getcustomasset and writefile then
+            writefile("HutaoIcon.png", game:HttpGet("https://github.com/AnonymousJava01/TPS-game-api/blob/main/ic_launcher.png"))
+            return getcustomasset("HutaoIcon.png")
+        else
+            return ""
+        end
+    end)
+    return ""
 end
 
 local gui = Instance.new("ScreenGui")
