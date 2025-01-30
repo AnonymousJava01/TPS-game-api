@@ -3380,16 +3380,6 @@ Tabs.Server:AddButton({
     
 end
         
-
-local getLogo = function()
-    if getcustomasset and writefile then
-        writefile("HutaoLogo.png", game:HttpGet("https://cdn.discordapp.com/attachments/1212732144065974302/1333990088195051652/ic_launcher.png?ex=679ae695&is=67999515&hm=2d946522acad68c350c6509b4c4d90c47a32326734a3747b895853eea5fe339e&"))
-        return getcustomasset("HutaoLogo.png")
-    else
-        return ""
-    end
-end
-
 local gui = Instance.new("ScreenGui")
 gui.Name = "Gui"
 gui.Parent = game.CoreGui
@@ -3402,7 +3392,7 @@ button.BorderColor3 = Color3.fromRGB(0, 0, 0)
 button.BorderSizePixel = 0
 button.Position = UDim2.new(0, 10, 0, 10)
 button.Size = UDim2.new(0, 50, 0, 50)
-button.Image = getLogo() or ""
+button.Image = ""
 button.ScaleType = Enum.ScaleType.Crop
 
 local UICorner = Instance.new("UICorner")
