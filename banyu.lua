@@ -202,10 +202,10 @@ PlayerGUI.ChildAdded:Connect(function(GUI)
     if GUI:IsA("ScreenGui") then
         if GUI.Name == "reel" and autoReel then
             local reelfinishRemote = game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("reelfinished")
-            if reelfinishRemote then
+            if reelfinished then
                 while GUI do
                     task.wait(2)
-                    reelfinishRemote:FireServer(100, false)
+                    reelfinishRemote:FireServer(100, true)
                 end
             end
         end
@@ -407,11 +407,11 @@ end
 PlayerGUI.ChildAdded:Connect(function(GUI)
     if GUI:IsA("ScreenGui") then
     elseif GUI.Name == "reel" and autoReel then
-        local reelfinishedEvent = ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished")
-        if reelfinishedEvent then
+        local reelfinishRemote = game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("reelfinished")
+            if reelfinished then
             while GUI do
                 task.wait(2)
-                reelfinishedEvent:FireServer(100, false)
+                reelfinishRemote:FireServer(100, true)
             end
         end
     end
