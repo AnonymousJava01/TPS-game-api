@@ -1,4 +1,4 @@
--- v1.6
+-- v1
 
 local ProtectPremium = true
 
@@ -184,7 +184,7 @@ local AutoFish = false
 local autoShake2 = false
 local autoShake3 = false
 local AutoZoneCast = false
-local autoShakeDelay = 0.000000001
+local autoShakeDelay = 0.001
 local autoReel = false
 local AutoCast = false
 local Noclip = false
@@ -201,11 +201,11 @@ local Keybind = Enum.KeyCode.F
 PlayerGUI.ChildAdded:Connect(function(GUI)
     if GUI:IsA("ScreenGui") then
         if GUI.Name == "reel" and autoReel then
-            local reelfinishRemote = game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("reelfinished")
-            if reelfinished then
+            local reelfinishedEvent = ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished")
+            if reelfinishedEvent then
                 while GUI do
                     task.wait(2)
-                    reelfinishRemote:FireServer(100, false)
+                    reelfinishedEvent:FireServer(100, false)
                 end
             end
         end
@@ -407,11 +407,11 @@ end
 PlayerGUI.ChildAdded:Connect(function(GUI)
     if GUI:IsA("ScreenGui") then
     elseif GUI.Name == "reel" and autoReel then
-        local reelfinishRemote = game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("reelfinished")
-            if reelfinished then
+        local reelfinishedEvent = ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished")
+        if reelfinishedEvent then
             while GUI do
                 task.wait(2)
-                reelfinishRemote:FireServer(100, false)
+                reelfinishedEvent:FireServer(100, false)
             end
         end
     end
@@ -758,7 +758,7 @@ do
         Title = "AutoShake Delay",
         Description = "Change the delay between every shake",
         Default = 2,
-        Min = 0.2,
+        Min = 0.001,
         Max = 1,
         Rounding = 1,
         Callback = function(Value)
@@ -768,7 +768,7 @@ do
     Slider:OnChanged(function(Value)
         autoShakeDelay = Value
     end)
-    Slider:SetValue(0.5)
+    Slider:SetValue(0.001)
     
     local autoReelCastShakeT = Tabs.Main:AddToggle("autoReelCastShakeT", {Title = "Auto Fish", Default = false })
     autoReelCastShakeT:OnChanged(function(Value)
@@ -1261,45 +1261,3 @@ Fluent:Notify({
 })
 
 SaveManager:LoadAutoloadConfig()
-
-local deviceType = game:GetService("UserInputService").TouchEnabled and "Mobile" or "PC"
-
-if deviceType == "Mobile" then
-    local A = Instance.new("ScreenGui")
-    local B = Instance.new("TextButton")
-    local C = Instance.new("UICorner")
-
-    A.Name = "SpaceToggle"
-    A.Parent = game.CoreGui
-    A.ResetOnSpawn = false
-
-    B.Size = UDim2.new(0, 50, 0, 50)
-    B.Position = UDim2.new(0, 10, 1, -60) -- Consider making this responsive
-    B.BackgroundColor3 = Color3.fromRGB(128, 0, 128)
-    B.Text = "S"
-    B.TextColor3 = Color3.fromRGB(0, 0, 0)
-    B.TextScaled = true
-    B.Transparency = 0.5
-    B.Parent = A
-
-    local function toggleVisibility(frame)
-        for _, child in ipairs(frame:GetChildren()) do
-            if child:IsA("Frame") then
-                child.Visible = not child.Visible
-                toggleVisibility(child)
-            end
-        end
-    end
-
-    B.MouseButton1Click:Connect(function()
-        local spaceGui = game.CoreGui:FindFirstChild("ScreenGui") -- Replace with the actual name
-        if spaceGui then
-            toggleVisibility(spaceGui)
-        else
-            warn("1")
-        end
-    end)
-
-    C.CornerRadius = UDim.new(1, 0)
-    C.Parent = B
-end
