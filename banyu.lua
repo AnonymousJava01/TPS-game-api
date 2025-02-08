@@ -1,3 +1,46 @@
+local getLogo = function()
+    if getcustomasset and writefile then
+        writefile("HutaoLogo.png", game:HttpGet("https://cdn.discordapp.com/attachments/1212732144065974302/1333990088195051652/ic_launcher.png?ex=679ae695&is=67999515&hm=2d946522acad68c350c6509b4c4d90c47a32326734a3747b895853eea5fe339e&"))
+        return getcustomasset("HutaoLogo.png")
+    else
+        return ""
+    end
+end
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "Gui"
+gui.Parent = game.CoreGui
+
+local button = Instance.new("ImageButton")
+button.Name = "HutaoHub"
+button.Parent = gui 
+button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+button.BorderColor3 = Color3.fromRGB(0, 0, 0)
+button.BorderSizePixel = 0
+button.Position = UDim2.new(0, 10, 0, 10)
+button.Size = UDim2.new(0, 50, 0, 50)
+button.Image = getLogo() or ""
+button.ScaleType = Enum.ScaleType.Crop
+
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(0, 10)  
+UICorner.Parent = button
+
+local isOpen = false
+local isDraggable = false
+local dragConnection
+
+button.MouseButton1Click:Connect(function()
+        Window:Minimize()
+end)
+
+function setDraggable(draggable)
+        if draggable then
+            button.Draggable = true 
+        else
+            button.Draggable = false
+        end
+end
 -- v1.6
 
 local ProtectPremium = true
@@ -1713,45 +1756,3 @@ Fluent:Notify({
 })
 
 SaveManager:LoadAutoloadConfig()
-
-local deviceType = game:GetService("UserInputService").TouchEnabled and "Mobile" or "PC"
-
-if deviceType == "Mobile" then
-    local A = Instance.new("ScreenGui")
-    local B = Instance.new("TextButton")
-    local C = Instance.new("UICorner")
-
-    A.Name = "SpaceToggle"
-    A.Parent = game.CoreGui
-    A.ResetOnSpawn = false
-
-    B.Size = UDim2.new(0, 50, 0, 50)
-    B.Position = UDim2.new(0, 10, 1, -60) -- Consider making this responsive
-    B.BackgroundColor3 = Color3.fromRGB(128, 0, 128)
-    B.Text = "Banyu"
-    B.TextColor3 = Color3.fromRGB(0, 0, 0)
-    B.TextScaled = true
-    B.Transparency = 0.5
-    B.Parent = A
-
-    local function toggleVisibility(frame)
-        for _, child in ipairs(frame:GetChildren()) do
-            if child:IsA("Frame") then
-                child.Visible = not child.Visible
-                toggleVisibility(child)
-            end
-        end
-    end
-
-    B.MouseButton1Click:Connect(function()
-        local spaceGui = game.CoreGui:FindFirstChild("ScreenGui") -- Replace with the actual name
-        if spaceGui then
-            toggleVisibility(spaceGui)
-        else
-            warn("1")
-        end
-    end)
-
-    C.CornerRadius = UDim.new(1, 0)
-    C.Parent = B
-end
