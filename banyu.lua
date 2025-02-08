@@ -205,7 +205,7 @@ PlayerGUI.ChildAdded:Connect(function(GUI)
             if reelfinished then
                 while GUI do
                     task.wait(2)
-                    reelfinishRemote:FireServer(100, true)
+                    reelfinishRemote:FireServer(100, false)
                 end
             end
         end
@@ -411,7 +411,7 @@ PlayerGUI.ChildAdded:Connect(function(GUI)
             if reelfinished then
             while GUI do
                 task.wait(2)
-                reelfinishRemote:FireServer(100, true)
+                reelfinishRemote:FireServer(100, false)
             end
         end
     end
