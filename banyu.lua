@@ -19,8 +19,6 @@ local clonefunction = clonefunction or function(...)
     return ...
 end
 
-local Players, LocalPlayer, StarterGui = cloneref(game:GetService("Players")), cloneref(game:GetService("Players").LocalPlayer), cloneref(game:GetService("StarterGui"))
-
 local SetCore = clonefunction(StarterGui.SetCore)
 --local GetDebugId = clonefunction(game.GetDebugId)
 local FindFirstChild = clonefunction(game.FindFirstChild)
