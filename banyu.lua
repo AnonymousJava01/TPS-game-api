@@ -56,22 +56,6 @@ game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit
    end,
 })
 
-local Button = MainTab:CreateButton({
-   Name = "red team goal",
-   Callback = function()
-   -- The function that takes place when the button is pressed
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-233.895844, 11.5962877, -49.0539093, 0.00378090143, 0, 0.999992847, 0, 1, 0, -0.999992847, 0, 0.00378090143)
-     end,
-})
-
-local Button = MainTab:CreateButton({
-   Name = "blue team goal",
-   Callback = function()
-   -- The function that takes place when the button is pressed
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(311.026611, 11.5340939, -49.1913605, 0, 0, -1, 0, 1, 0, 1, 0, 0)
-     end,
-})
-
 local Slider = MainTab:CreateSlider({
    Name = "speed",
    Range = {0, 100},
