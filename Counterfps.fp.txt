@@ -190,8 +190,8 @@ Tabs.Main:AddParagraph({
     })
  
 Tabs.Main:AddButton({
-            Title = "Infinite Get Money Free",
-            Description = "use it before patch",
+            Title = "Anti Kick Client",
+            Description = "",
             Callback = function()
 loadstring(game:HttpGet('https://gitlab.com/Sky2836/BT/-/raw/main/antikickclient'))()
             end
