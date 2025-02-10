@@ -184,19 +184,13 @@ Tabs.Main:AddParagraph({
         Content = ""
     })
  
-getgenv().AntiKickClient = true
-local Toggle = Tabs.Main:AddToggle("AntiKick", {Title = "Anti Kick Client", Default = false })
-
-Toggle:OnChanged(function(value)
-getgenv().AntiKickClient = Value
-end)
-task.spawn(function()
-    while wait() do
-        if getgenv().AntiKickClient then
-            loadstring(game:HttpGet('https://gitlab.com/Sky2836/BT/-/raw/main/antikickclient'))()
-        end
-    end
-end)
+Tabs.Main:AddButton({
+            Title = "Anti Kick",
+            Description = "Best script for all games",
+            Callback = function()
+                loadstring(game:HttpGet('https://gitlab.com/Sky2836/BT/-/raw/main/antikickclient'))()
+            end
+        })
    
 Tabs.Main:AddButton({
             Title = "Infinite Yield",
