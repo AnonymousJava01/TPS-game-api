@@ -1,3 +1,7 @@
+repeat task.wait() until game:IsLoaded()
+
+local TimeStart = tick()
+
 --// Pesan Untuk Candy, Jangan Lupa Tidur
 
 local getgenv, getnamecallmethod, hookmetamethod, hookfunction, newcclosure, checkcaller, lower, gsub, match = getgenv, getnamecallmethod, hookmetamethod, hookfunction, newcclosure, checkcaller, string.lower, string.gsub, string.match
@@ -48,7 +52,7 @@ local OldNamecall; OldNamecall = hookmetamethod(game, "__namecall", newcclosure(
 		if CanCastToSTDString(message) then
 			if getgenv().ED_AntiKick.SendNotifications then
 				SetCore(StarterGui, "SendNotification", {
-					Title = "Akbar Hub - Anti-Kick",
+					Title = "Hutao Hub - Anti-Kick",
 					Text = "Successfully intercepted an attempted kick.",
 					Icon = "rbxassetid://6238540373",
 					Duration = 2
@@ -89,11 +93,6 @@ if getgenv().ED_AntiKick.SendNotifications then
 		Duration = 3
 	})
 end
-
-repeat task.wait() until game:IsLoaded()
-
-local TimeStart = tick()
-
 
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
