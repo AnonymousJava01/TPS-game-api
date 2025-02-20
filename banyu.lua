@@ -1,3 +1,245 @@
+local id = game.PlaceId
+if id == 16732694052 then
+Fisch = true;
+else
+game:Shutdown()
+end;
+if game.Workspace.zones.fishing:FindFirstChild("Megalodon Default") then
+    if Fisch then
+ 
+    for i, v in pairs(game.Players:GetPlayers()) do
+        PlayersMin = i
+    end
+ 
+    if game.Workspace.zones.fishing:FindFirstChild("Megalodon Default") then
+        MegalodonMessage = '```Megalodon is spawing : 🟢```'
+    else
+        MegalodonMessage = '```Megalodon isn\'t spawn : ❌```'
+    end
+    JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
+        '\'' .. tostring(game.JobId) .. '\'' .. ')'
+ 
+ 
+    local url = "https://discord.com/api/webhooks/1278884503657382000/9kDl7uDfuZaJ7x78usrF2I3CSHVKHGS8BSsjkXmGbDvFHL7k97BT4SejCImEAcix7HdA"                                                                                                                
+    local data = {
+        ["username"] = 'Megalodon Finder Hutaohub',                                                                                                                                                                                                           
+        ['content'] = '',--'<@&1178668706461646953>',                                                                                                                                                                                            
+        ["avatar_url"] = "https://media.discordapp.net/attachments/1204981612895408188/1224319600498442382/sun.png?ex=661d0f7b&is=660a9a7b&hm=5396dee9baaf5052489901065eb992edde05ce0017690ccf3bf848e1c7485ed5&=&format=webp&quality=lossless&width=280&height=280", 
+        ["embeds"] = {
+            {
+                ["description"] = "**__Megalodon Webhook__**",
+                ["color"] = tonumber(0x0000FF), -- color id		#
+                ["type"] = "rich",
+                ["fields"] = {
+                    {
+                        ["name"] = "[🦈] Megalodon Check",
+                        ["value"] = MegalodonMessage,
+                        ["inline"] = true
+                    },
+                    {
+                        ["name"] = "[📃] JobID",
+                        ["value"] = '```' .. tostring(game.JobId) .. '```'
+                    },
+                    {
+                        ["name"] = "[📁] Join Server",
+                        ["value"] = '```' .. JoinServer .. '```',
+                    },
+                    {
+                        ["name"] = "[👥] Players Active",
+                        ["value"] = '```' .. tostring(PlayersMin) .. '/15```'
+                    }
+                },
+                ["footer"] = {
+                    ["text"] = "Webhook Created By Hutaohub", 
+                },
+                ["timestamp"] = DateTime.now():ToIsoDate(),
+            }
+        },
+    }
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+    local headers = { ["content-type"] = "application/json" }
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
+    request(abcdef)
+    end
+    end
+    if game.Workspace.zones.fishing:FindFirstChild("Isonade") then
+    if Fisch then
+ 
+    for i, v in pairs(game.Players:GetPlayers()) do
+        PlayersMin = i
+    end
+ 
+    if game.Workspace.zones.fishing:FindFirstChild("Isonade") then
+        IsonadeMessage = '```Strange Whirlpool is spawing : 🟢```'
+    else
+        IsonadeMessage = '```Strange Whirlpool isn\'t spawn : ❌```'
+    end
+    JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
+        '\'' .. tostring(game.JobId) .. '\'' .. ')'
+ 
+ 
+    local url = "https://discord.com/api/webhooks/1278884503657382000/9kDl7uDfuZaJ7x78usrF2I3CSHVKHGS8BSsjkXmGbDvFHL7k97BT4SejCImEAcix7HdA"                                                                                                                
+    local data = {
+        ["username"] = 'Strange Whirlpool Finder Hutaohub',                                                                                                                                                                                                           
+        ['content'] = '',--'<@&1178668706461646953>',                                                                                                                                                                                            
+        ["avatar_url"] = "https://media.discordapp.net/attachments/1204981612895408188/1224319600498442382/sun.png?ex=661d0f7b&is=660a9a7b&hm=5396dee9baaf5052489901065eb992edde05ce0017690ccf3bf848e1c7485ed5&=&format=webp&quality=lossless&width=280&height=280", 
+        ["embeds"] = {
+            {
+                ["description"] = "**__Strange Whirlpool Webhook__**",
+                ["color"] = tonumber(0x0000FF), -- color id		#
+                ["type"] = "rich",
+                ["fields"] = {
+                    {
+                        ["name"] = "[🌊] Strange Whirlpool Check",
+                        ["value"] = IsonadeMessage,
+                        ["inline"] = true
+                    },
+                    {
+                        ["name"] = "[📃] JobID",
+                        ["value"] = '```' .. tostring(game.JobId) .. '```'
+                    },
+                    {
+                        ["name"] = "[📁] Join Server",
+                        ["value"] = '```' .. JoinServer .. '```',
+                    },
+                    {
+                        ["name"] = "[👥] Players Active",
+                        ["value"] = '```' .. tostring(PlayersMin) .. '/15```'
+                    }
+                },
+                ["footer"] = {
+                    ["text"] = "Webhook Created By Hutaohub", 
+                },
+                ["timestamp"] = DateTime.now():ToIsoDate(),
+            }
+        },
+    }
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+    local headers = { ["content-type"] = "application/json" }
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
+    request(abcdef)
+    end
+    end
+    if game.Workspace.zones.fishing:FindFirstChild("Orcas Pool") then
+    if Fisch then
+ 
+    for i, v in pairs(game.Players:GetPlayers()) do
+        PlayersMin = i
+    end
+ 
+    if game.Workspace.zones.fishing:FindFirstChild("Orcas Pool") then
+        OrcaMessage = '```Orcas Pool is spawing : 🟢```'
+    else
+        OrcaMessage = '```Orca isn\'t spawn : ❌```'
+    end
+    JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
+        '\'' .. tostring(game.JobId) .. '\'' .. ')'
+ 
+ 
+    local url = "https://discord.com/api/webhooks/1278884503657382000/9kDl7uDfuZaJ7x78usrF2I3CSHVKHGS8BSsjkXmGbDvFHL7k97BT4SejCImEAcix7HdA"                                                                                                                
+    local data = {
+        ["username"] = 'Orcas Pool Finder Hutaohub',                                                                                                                                                                                                           
+        ['content'] = '',--'<@&1178668706461646953>',                                                                                                                                                                                            
+        ["avatar_url"] = "https://media.discordapp.net/attachments/1204981612895408188/1224319600498442382/sun.png?ex=661d0f7b&is=660a9a7b&hm=5396dee9baaf5052489901065eb992edde05ce0017690ccf3bf848e1c7485ed5&=&format=webp&quality=lossless&width=280&height=280", 
+        ["embeds"] = {
+            {
+                ["description"] = "**__Orcas Webhook__**",
+                ["color"] = tonumber(0x0000FF), -- color id		#
+                ["type"] = "rich",
+                ["fields"] = {
+                    {
+                        ["name"] = "[🦈] Orcas Pool Check",
+                        ["value"] = OrcaMessage,
+                        ["inline"] = true
+                    },
+                    {
+                        ["name"] = "[📃] JobID",
+                        ["value"] = '```' .. tostring(game.JobId) .. '```'
+                    },
+                    {
+                        ["name"] = "[📁] Join Server",
+                        ["value"] = '```' .. JoinServer .. '```',
+                    },
+                    {
+                        ["name"] = "[👥] Players Active",
+                        ["value"] = '```' .. tostring(PlayersMin) .. '/15```'
+                    }
+                },
+                ["footer"] = {
+                    ["text"] = "Webhook Created By Hutaohub", 
+                },
+                ["timestamp"] = DateTime.now():ToIsoDate(),
+            }
+        },
+    }
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+    local headers = { ["content-type"] = "application/json" }
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
+    request(abcdef)
+    end
+    end
+    if game.Workspace.zones.fishing:FindFirstChild("Lovestorm Eel") then
+    if Fisch then
+ 
+    for i, v in pairs(game.Players:GetPlayers()) do
+        PlayersMin = i
+    end
+ 
+    if game.Workspace.zones.fishing:FindFirstChild("Lovestorm Eel") then
+        LovestormMessage = '```Lovestorm Eel is spawing : 🟢```'
+    else
+        LovestormMessage = '```Lovestorm Eel isn\'t spawn : ❌```'
+    end
+    JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
+        '\'' .. tostring(game.JobId) .. '\'' .. ')'
+ 
+ 
+    local url = "https://discord.com/api/webhooks/1278884503657382000/9kDl7uDfuZaJ7x78usrF2I3CSHVKHGS8BSsjkXmGbDvFHL7k97BT4SejCImEAcix7HdA"                                                                                                                
+    local data = {
+        ["username"] = 'Lovestorm Eel Finder Hutaohub',                                                                                                                                                                                                           
+        ['content'] = '',--'<@&1178668706461646953>',                                                                                                                                                                                            
+        ["avatar_url"] = "https://media.discordapp.net/attachments/1204981612895408188/1224319600498442382/sun.png?ex=661d0f7b&is=660a9a7b&hm=5396dee9baaf5052489901065eb992edde05ce0017690ccf3bf848e1c7485ed5&=&format=webp&quality=lossless&width=280&height=280", 
+        ["embeds"] = {
+            {
+                ["description"] = "**__Lovestorm Eel Webhook__**",
+                ["color"] = tonumber(0x0000FF), -- color id		#
+                ["type"] = "rich",
+                ["fields"] = {
+                    {
+                        ["name"] = "[❤️] Lovestorm Eel Check",
+                        ["value"] = LovestormMessage,
+                        ["inline"] = true
+                    },
+                    {
+                        ["name"] = "[📃] JobID",
+                        ["value"] = '```' .. tostring(game.JobId) .. '```'
+                    },
+                    {
+                        ["name"] = "[📁] Join Server",
+                        ["value"] = '```' .. JoinServer .. '```',
+                    },
+                    {
+                        ["name"] = "[👥] Players Active",
+                        ["value"] = '```' .. tostring(PlayersMin) .. '/15```'
+                    }
+                },
+                ["footer"] = {
+                    ["text"] = "Webhook Created By Hutaohub", 
+                },
+                ["timestamp"] = DateTime.now():ToIsoDate(),
+            }
+        },
+    }
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+    local headers = { ["content-type"] = "application/json" }
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
+    request(abcdef)
+    end
+    end
 --// Pesan Untuk Candy, Jangan Lupa Tidur
 
 local getgenv, getnamecallmethod, hookmetamethod, hookfunction, newcclosure, checkcaller, lower, gsub, match = getgenv, getnamecallmethod, hookmetamethod, hookfunction, newcclosure, checkcaller, string.lower, string.gsub, string.match
@@ -132,7 +374,7 @@ end)
 warn("[Anti Afk] - loaded successfully") 
 
 --<>----<>----<>----< Main Script >----<>----<>----<>--
-print("[Space Hub | Fisch]: loading...")
+print("[Than Hub | Fisch]: loading...")
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -276,7 +518,7 @@ local AutoFish = false
 local autoShake2 = false
 local autoShake3 = false
 local AutoZoneCast = false
-local autoShakeDelay = 0.3
+local autoShakeDelay = 0.000001
 local autoReel = false
 local AutoCast = false
 local Noclip = false
@@ -296,7 +538,7 @@ PlayerGUI.ChildAdded:Connect(function(GUI)
             local reelfinishRemote = game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("reelfinished ")
             if reelfinishRemote then
                 while GUI do
-                    task.wait(2)
+                    task.wait(0.5)
                     reelfinishRemote:FireServer(100, false)
                 end
             end
@@ -315,10 +557,15 @@ function AutoFish5()
                         local button = safezone:FindFirstChild("button")
                         if button and button:IsA("ImageButton") and button.Visible then
                             if autoShake then
-                                local pos = button.AbsolutePosition
-                                local size = button.AbsoluteSize
-                                VirtualInputManager:SendMouseButtonEvent(pos.X + size.X / 2, pos.Y + size.Y / 2, 0, true, game:GetService("Players").LocalPlayer, 0)
-                                VirtualInputManager:SendMouseButtonEvent(pos.X + size.X / 2, pos.Y + size.Y / 2, 0, false, game:GetService("Players").LocalPlayer, 0)
+                                local inset = GuiService:GetGuiInset()
+                                local absoluteSize = to_click.AbsoluteSize
+                                local offset = { x = absoluteSize.X / 2, y = absoluteSize.Y / 2 }
+
+                                local x = to_click.AbsolutePosition.X + offset.x
+                                local y = to_click.AbsolutePosition.Y + offset.y
+
+                               VirtualInput:SendMouseButtonEvent(x + inset.X, y + inset.Y, 0, true, playerGui, 1)  -- Mouse down
+                               VirtualInput:SendMouseButtonEvent(x + inset.X, y + inset.Y, 0, false, playerGui, 1) -- Mouse up
                             elseif autoShake2 then
                                 GuiService.SelectedObject = button
                                 VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Return, false, game)
@@ -502,7 +749,7 @@ PlayerGUI.ChildAdded:Connect(function(GUI)
         local reelfinishRemote = game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("reelfinished ")
         if reelfinishRemote then
             while GUI do
-                task.wait(2)
+                task.wait(0.5)
                 reelfinishRemote:FireServer(100, false)
             end
         end
@@ -524,11 +771,11 @@ function Pidoras()
                         local castEvent = tool:FindFirstChild("events") and tool.events:FindFirstChild("cast")
 
                         if castEvent then
-                            local Random = math.random() * (99 - 90) + 90
+                            local Random = math.random() * (2 - 1) + 90
                             local FRandom = string.format("%.4f", Random)
                             print(FRandom)
                             
-                            local Random2 = math.random(90, 99)
+                            local Random2 = math.random(1, 2)
                             castEvent:FireServer(Random2)
 
                             local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
@@ -610,7 +857,7 @@ function WebhookManager()
             local LvlPlayer = game:GetService("Players").LocalPlayer.leaderstats.Level.Value
 
             local Embed = {
-                title = 'Space Hub',
+                title = 'Than Hub',
                 color = 0x8B26BB,
                 fields = {
                     { name = 'Player Profile', value = playerProfileUrl },
@@ -628,7 +875,7 @@ function WebhookManager()
                     Method = 'POST',
                     Headers = { ['Content-Type'] = 'application/json' },
                     Body = game:GetService('HttpService'):JSONEncode({
-                        username = 'Space Hub | Fisch',
+                        username = 'Than Hub | Fisch',
                         avatar_url = 'https://cdn.discordapp.com/icons/1241045437884923965/6e134ec00e5adf7fc7f82fcabce45e8a.webp?size=4096',
                         embeds = { Embed }
                     }),
@@ -646,7 +893,7 @@ function WebhookManager()
                     Method = 'POST',
                     Headers = { ['Content-Type'] = 'application/json' },
                     Body = game:GetService('HttpService'):JSONEncode({
-                        username = 'Space Hub | Fisch',
+                        username = 'Than Hub | Fisch',
                         avatar_url = 'https://cdn.discordapp.com/icons/1241045437884923965/6e134ec00e5adf7fc7f82fcabce45e8a.webp?size=4096',
                         embeds = { Embed }
                     }),
@@ -850,7 +1097,7 @@ do
         Title = "AutoShake Delay",
         Description = "Change the delay between every shake",
         Default = 2,
-        Min = 0.2,
+        Min = 0.000001,
         Max = 1,
         Rounding = 1,
         Callback = function(Value)
@@ -860,7 +1107,7 @@ do
     Slider:OnChanged(function(Value)
         autoShakeDelay = Value
     end)
-    Slider:SetValue(0.5)
+    Slider:SetValue(0.000001)
     
     local autoReelCastShakeT = Tabs.Main:AddToggle("autoReelCastShakeT", {Title = "Auto Fish", Default = false })
     autoReelCastShakeT:OnChanged(function(Value)
@@ -879,10 +1126,10 @@ do
         if AutoCast == true and LocalCharacter:FindFirstChildOfClass("Tool") ~= nil then
             local Tool = LocalCharacter:FindFirstChildOfClass("Tool")
             if Tool:FindFirstChild("events"):WaitForChild("cast") ~= nil then
-                local Random = math.random() * (99 - 90) + 90
+                local Random = math.random() * (2 - 1) + 90
                 local FRandom = string.format("%.4f", Random)
                 print(FRandom)
-                local Random2 = math.random(90, 99)
+                local Random2 = math.random(1, 2)
                 Tool.events.cast:FireServer(Random2)
             end
         end
@@ -1342,7 +1589,7 @@ SaveManager:BuildConfigSection(Tabs.Settings)
 Window:SelectTab(1)
 
 Fluent:Notify({
-    Title = "Space Hub",
+    Title = "Than Hub",
     Content = "The script has been loaded.",
     Duration = 8
 })
@@ -1395,3 +1642,16 @@ if deviceType == "Mobile" then
     C.CornerRadius = UDim.new(1, 0)
     C.Parent = B
 end
+
+spawn(function()
+    cloneref(game.CoreGui).ChildAdded:Connect(function(child)
+        if child.Name == "RobloxPromptGui" then
+            repeat wait() until child:FindFirstChild("promptOverlay") ~= nil and child.promptOverlay:FindFirstChild("ErrorPrompt") ~= nil
+            game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
+        end
+    end)
+
+    hookfunction(LocalPlayer.Kick, function(...)
+        return wait(9e9)
+    end)
+end)
