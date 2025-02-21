@@ -240,7 +240,8 @@ if game.Workspace.zones.fishing:FindFirstChild("Megalodon Default") then
     request(abcdef)
     end
     end
---// Pesan Untuk Candy, Jangan Lupa Tidur
+
+  --// Pesan Untuk Candy, Jangan Lupa Tidur
 
 local getgenv, getnamecallmethod, hookmetamethod, hookfunction, newcclosure, checkcaller, lower, gsub, match = getgenv, getnamecallmethod, hookmetamethod, hookfunction, newcclosure, checkcaller, string.lower, string.gsub, string.match
 
@@ -334,7 +335,7 @@ end
 
 -- v1.6
 
-local ProtectPremium = true
+local ProtectPremium = false
 
 --<>----<>----<>----< Getting Services >----<>----<>----<>--
 AnalyticsService = game:GetService("AnalyticsService")
@@ -518,7 +519,7 @@ local AutoFish = false
 local autoShake2 = false
 local autoShake3 = false
 local AutoZoneCast = false
-local autoShakeDelay = 0.000001
+local autoShakeDelay = 0.3
 local autoReel = false
 local AutoCast = false
 local Noclip = false
@@ -538,7 +539,7 @@ PlayerGUI.ChildAdded:Connect(function(GUI)
             local reelfinishRemote = game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("reelfinished ")
             if reelfinishRemote then
                 while GUI do
-                    task.wait(0.0000001)
+                    task.wait(2)
                     reelfinishRemote:FireServer(100, false)
                 end
             end
@@ -557,15 +558,10 @@ function AutoFish5()
                         local button = safezone:FindFirstChild("button")
                         if button and button:IsA("ImageButton") and button.Visible then
                             if autoShake then
-                                local inset = GuiService:GetGuiInset()
-                                local absoluteSize = to_click.AbsoluteSize
-                                local offset = { x = absoluteSize.X / 2, y = absoluteSize.Y / 2 }
-
-                                local x = to_click.AbsolutePosition.X + offset.x
-                                local y = to_click.AbsolutePosition.Y + offset.y
-
-                               VirtualInput:SendMouseButtonEvent(x + inset.X, y + inset.Y, 0, true, playerGui, 1)  -- Mouse down
-                               VirtualInput:SendMouseButtonEvent(x + inset.X, y + inset.Y, 0, false, playerGui, 1) -- Mouse up
+                                local pos = button.AbsolutePosition
+                                local size = button.AbsoluteSize
+                                VirtualInputManager:SendMouseButtonEvent(pos.X + size.X / 2, pos.Y + size.Y / 2, 0, true, game:GetService("Players").LocalPlayer, 0)
+                                VirtualInputManager:SendMouseButtonEvent(pos.X + size.X / 2, pos.Y + size.Y / 2, 0, false, game:GetService("Players").LocalPlayer, 0)
                             elseif autoShake2 then
                                 GuiService.SelectedObject = button
                                 VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Return, false, game)
@@ -749,7 +745,7 @@ PlayerGUI.ChildAdded:Connect(function(GUI)
         local reelfinishRemote = game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("reelfinished ")
         if reelfinishRemote then
             while GUI do
-                task.wait(0.0000001)
+                task.wait(2)
                 reelfinishRemote:FireServer(100, false)
             end
         end
@@ -771,11 +767,11 @@ function Pidoras()
                         local castEvent = tool:FindFirstChild("events") and tool.events:FindFirstChild("cast")
 
                         if castEvent then
-                            local Random = math.random() * (2 - 1) + 90
+                            local Random = math.random() * (99 - 90) + 90
                             local FRandom = string.format("%.4f", Random)
                             print(FRandom)
                             
-                            local Random2 = math.random(1, 2)
+                            local Random2 = math.random(90, 99)
                             castEvent:FireServer(Random2)
 
                             local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
@@ -926,19 +922,8 @@ function Appraise()
 end
 
 function SellFishAndReturnAll()
-    local player = game.Players.LocalPlayer
-    local character = player.Character or player.CharacterAdded:Wait()
-    local rootPart = character:WaitForChild("HumanoidRootPart")
-    local currentPosition = rootPart.CFrame
-    local sellPosition = CFrame.new(464, 151, 232)
-    local wasAutoFreezeActive = false
-    if AutoFreeze then
-        wasAutoFreezeActive = true
-        AutoFreeze = false
-    end
-    rootPart.CFrame = sellPosition
     task.wait(0.5)
-    workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Marc Merchant"):WaitForChild("merchant"):WaitForChild("sellall"):InvokeServer()
+    game:GetService("ReplicatedStorage").events.SellAll:InvokeServer()
     task.wait(3)
 
     rootPart.CFrame = currentPosition
@@ -949,19 +934,8 @@ function SellFishAndReturnAll()
     end
 end
 function SellFishAndReturnOne()
-    local player = game.Players.LocalPlayer
-    local character = player.Character or player.CharacterAdded:Wait()
-    local rootPart = character:WaitForChild("HumanoidRootPart")
-    local currentPosition = rootPart.CFrame
-    local sellPosition = CFrame.new(464, 151, 232)
-    local wasAutoFreezeActive = false
-    if AutoFreeze then
-        wasAutoFreezeActive = true
-        AutoFreeze = false
-    end
-    rootPart.CFrame = sellPosition
     task.wait(0.5)
-    workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Marc Merchant"):WaitForChild("merchant"):WaitForChild("sell"):InvokeServer()
+    game:GetService("ReplicatedStorage").events.Sell:InvokeServer()
     task.wait(3)
 
     rootPart.CFrame = currentPosition
@@ -1097,7 +1071,7 @@ do
         Title = "AutoShake Delay",
         Description = "Change the delay between every shake",
         Default = 2,
-        Min = 0.000001,
+        Min = 0.2,
         Max = 1,
         Rounding = 1,
         Callback = function(Value)
@@ -1107,7 +1081,7 @@ do
     Slider:OnChanged(function(Value)
         autoShakeDelay = Value
     end)
-    Slider:SetValue(0.000001)
+    Slider:SetValue(0.5)
     
     local autoReelCastShakeT = Tabs.Main:AddToggle("autoReelCastShakeT", {Title = "Auto Fish", Default = false })
     autoReelCastShakeT:OnChanged(function(Value)
@@ -1126,10 +1100,10 @@ do
         if AutoCast == true and LocalCharacter:FindFirstChildOfClass("Tool") ~= nil then
             local Tool = LocalCharacter:FindFirstChildOfClass("Tool")
             if Tool:FindFirstChild("events"):WaitForChild("cast") ~= nil then
-                local Random = math.random() * (2 - 1) + 90
+                local Random = math.random() * (99 - 90) + 90
                 local FRandom = string.format("%.4f", Random)
                 print(FRandom)
-                local Random2 = math.random(1, 2)
+                local Random2 = math.random(90, 99)
                 Tool.events.cast:FireServer(Random2)
             end
         end
@@ -1651,7 +1625,7 @@ spawn(function()
         end
     end)
 
-    hookfunction(LocalPlayer.Kick, function(...)
+    hookfunction(game.Players.LocalPlayer.Kick, function(...)
         return wait(9e9)
     end)
 end)
