@@ -1308,6 +1308,25 @@ do
         Noclip = ToggleNoclip.Value
     end)
 
+    local ToggleAntiDrown = Tabs.Misc:AddToggle("ToggleAntiDrown", {Title = "Infinity Oxygen", Default = false })
+    ToggleAntiDrown:OnChanged(function()
+        AntiDrown = ToggleAntiDrown.Value
+        if AntiDrown == true then
+            if LocalCharacter ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen") ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen").Enabled == true then
+                LocalCharacter.client.oxygen.Enabled = false
+            end
+            CharAddedAntiDrownCon = LocalPlayer.CharacterAdded:Connect(function()
+                if LocalCharacter ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen") ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen").Enabled == true and AntiDrown == true then
+                    LocalCharacter.client.oxygen.Enabled = false
+                end
+            end)
+        else
+            if LocalCharacter ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen") ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen").Enabled == false then
+                LocalCharacter.client.oxygen.Enabled = true
+            end
+        end
+    end)
+
     local section = Tabs.Misc:AddSection("Fps Services")
 
     local Slider512 = Tabs.Misc:AddSlider("Slider512", {
