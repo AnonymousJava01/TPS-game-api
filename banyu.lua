@@ -539,7 +539,7 @@ PlayerGUI.ChildAdded:Connect(function(GUI)
             local reelfinishRemote = game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("reelfinished ")
             if reelfinishRemote then
                 while GUI do
-                    task.wait(2)
+                    task.wait(0)
                     reelfinishRemote:FireServer(100, false)
                 end
             end
@@ -745,7 +745,7 @@ PlayerGUI.ChildAdded:Connect(function(GUI)
         local reelfinishRemote = game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("reelfinished ")
         if reelfinishRemote then
             while GUI do
-                task.wait(2)
+                task.wait(0)
                 reelfinishRemote:FireServer(100, false)
             end
         end
