@@ -20,9 +20,9 @@ if game.Workspace.zones.fishing:FindFirstChild("Megalodon Default") then
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
  
  
-    local url = "https://discord.com/api/webhooks/1278884503657382000/9kDl7uDfuZaJ7x78usrF2I3CSHVKHGS8BSsjkXmGbDvFHL7k97BT4SejCImEAcix7HdA"                                                                                                                
+    local url = "https://discord.com/api/webhooks/1343104429590843392/pa7hAVSgaVt-GNxeBps0rW-2iisLqGhJxNKldUZxu31mUKv08yWPvNhvaoUNc4TdePnj"                                                                                                                
     local data = {
-        ["username"] = 'Megalodon Finder Hutaohub',                                                                                                                                                                                                           
+        ["username"] = 'Megalodon Finder Thanhub',                                                                                                                                                                                                           
         ['content'] = '',--'<@&1178668706461646953>',                                                                                                                                                                                            
         ["avatar_url"] = "https://media.discordapp.net/attachments/1204981612895408188/1224319600498442382/sun.png?ex=661d0f7b&is=660a9a7b&hm=5396dee9baaf5052489901065eb992edde05ce0017690ccf3bf848e1c7485ed5&=&format=webp&quality=lossless&width=280&height=280", 
         ["embeds"] = {
@@ -79,9 +79,9 @@ if game.Workspace.zones.fishing:FindFirstChild("Megalodon Default") then
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
  
  
-    local url = "https://discord.com/api/webhooks/1278884503657382000/9kDl7uDfuZaJ7x78usrF2I3CSHVKHGS8BSsjkXmGbDvFHL7k97BT4SejCImEAcix7HdA"                                                                                                                
+    local url = "https://discord.com/api/webhooks/1343104429590843392/pa7hAVSgaVt-GNxeBps0rW-2iisLqGhJxNKldUZxu31mUKv08yWPvNhvaoUNc4TdePnj"                                                                                                                
     local data = {
-        ["username"] = 'Strange Whirlpool Finder Hutaohub',                                                                                                                                                                                                           
+        ["username"] = 'Strange Whirlpool Finder Thanhub',                                                                                                                                                                                                           
         ['content'] = '',--'<@&1178668706461646953>',                                                                                                                                                                                            
         ["avatar_url"] = "https://media.discordapp.net/attachments/1204981612895408188/1224319600498442382/sun.png?ex=661d0f7b&is=660a9a7b&hm=5396dee9baaf5052489901065eb992edde05ce0017690ccf3bf848e1c7485ed5&=&format=webp&quality=lossless&width=280&height=280", 
         ["embeds"] = {
@@ -138,9 +138,9 @@ if game.Workspace.zones.fishing:FindFirstChild("Megalodon Default") then
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
  
  
-    local url = "https://discord.com/api/webhooks/1278884503657382000/9kDl7uDfuZaJ7x78usrF2I3CSHVKHGS8BSsjkXmGbDvFHL7k97BT4SejCImEAcix7HdA"                                                                                                                
+    local url = "https://discord.com/api/webhooks/1343104429590843392/pa7hAVSgaVt-GNxeBps0rW-2iisLqGhJxNKldUZxu31mUKv08yWPvNhvaoUNc4TdePnj"                                                                                                                
     local data = {
-        ["username"] = 'Orcas Pool Finder Hutaohub',                                                                                                                                                                                                           
+        ["username"] = 'Orcas Pool Finder Thanhub',                                                                                                                                                                                                           
         ['content'] = '',--'<@&1178668706461646953>',                                                                                                                                                                                            
         ["avatar_url"] = "https://media.discordapp.net/attachments/1204981612895408188/1224319600498442382/sun.png?ex=661d0f7b&is=660a9a7b&hm=5396dee9baaf5052489901065eb992edde05ce0017690ccf3bf848e1c7485ed5&=&format=webp&quality=lossless&width=280&height=280", 
         ["embeds"] = {
@@ -197,9 +197,9 @@ if game.Workspace.zones.fishing:FindFirstChild("Megalodon Default") then
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
  
  
-    local url = "https://discord.com/api/webhooks/1278884503657382000/9kDl7uDfuZaJ7x78usrF2I3CSHVKHGS8BSsjkXmGbDvFHL7k97BT4SejCImEAcix7HdA"                                                                                                                
+    local url = "https://discord.com/api/webhooks/1343104429590843392/pa7hAVSgaVt-GNxeBps0rW-2iisLqGhJxNKldUZxu31mUKv08yWPvNhvaoUNc4TdePnj"                                                                                                                
     local data = {
-        ["username"] = 'Lovestorm Eel Finder Hutaohub',                                                                                                                                                                                                           
+        ["username"] = 'Lovestorm Eel Finder Thanhub',                                                                                                                                                                                                           
         ['content'] = '',--'<@&1178668706461646953>',                                                                                                                                                                                            
         ["avatar_url"] = "https://media.discordapp.net/attachments/1204981612895408188/1224319600498442382/sun.png?ex=661d0f7b&is=660a9a7b&hm=5396dee9baaf5052489901065eb992edde05ce0017690ccf3bf848e1c7485ed5&=&format=webp&quality=lossless&width=280&height=280", 
         ["embeds"] = {
@@ -519,7 +519,7 @@ local AutoFish = false
 local autoShake2 = false
 local autoShake3 = false
 local AutoZoneCast = false
-local autoShakeDelay = 0.3
+local autoShakeDelay = 0.0000000000001
 local autoReel = false
 local AutoCast = false
 local Noclip = false
@@ -767,11 +767,11 @@ function Pidoras()
                         local castEvent = tool:FindFirstChild("events") and tool.events:FindFirstChild("cast")
 
                         if castEvent then
-                            local Random = math.random() * (99 - 90) + 90
+                            local Random = math.random() * (1 - 0) + 90
                             local FRandom = string.format("%.4f", Random)
                             print(FRandom)
                             
-                            local Random2 = math.random(90, 99)
+                            local Random2 = math.random(0, 1)
                             castEvent:FireServer(Random2)
 
                             local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
@@ -1071,7 +1071,7 @@ do
         Title = "AutoShake Delay",
         Description = "Change the delay between every shake",
         Default = 2,
-        Min = 0.2,
+        Min = 0.0000000000001,
         Max = 1,
         Rounding = 1,
         Callback = function(Value)
@@ -1081,7 +1081,7 @@ do
     Slider:OnChanged(function(Value)
         autoShakeDelay = Value
     end)
-    Slider:SetValue(0.5)
+    Slider:SetValue(0.0000000000001)
     
     local autoReelCastShakeT = Tabs.Main:AddToggle("autoReelCastShakeT", {Title = "Auto Fish", Default = false })
     autoReelCastShakeT:OnChanged(function(Value)
@@ -1100,10 +1100,10 @@ do
         if AutoCast == true and LocalCharacter:FindFirstChildOfClass("Tool") ~= nil then
             local Tool = LocalCharacter:FindFirstChildOfClass("Tool")
             if Tool:FindFirstChild("events"):WaitForChild("cast") ~= nil then
-                local Random = math.random() * (99 - 90) + 90
+                local Random = math.random() * (1 - 0) + 90
                 local FRandom = string.format("%.4f", Random)
                 print(FRandom)
-                local Random2 = math.random(90, 99)
+                local Random2 = math.random(0, 1)
                 Tool.events.cast:FireServer(Random2)
             end
         end
@@ -1306,25 +1306,6 @@ do
     local ToggleNoclip = Tabs.Misc:AddToggle("ToggleNoclip", {Title = "Noclip", Default = false })
     ToggleNoclip:OnChanged(function()
         Noclip = ToggleNoclip.Value
-    end)
-
-    local ToggleAntiDrown = Tabs.Misc:AddToggle("ToggleAntiDrown", {Title = "Infinity Oxygen", Default = false })
-    ToggleAntiDrown:OnChanged(function()
-        AntiDrown = ToggleAntiDrown.Value
-        if AntiDrown == true then
-            if LocalCharacter ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen") ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen").Enabled == true then	
-                LocalCharacter.client.oxygen.Enabled = false	
-            end	
-            CharAddedAntiDrownCon = LocalPlayer.CharacterAdded:Connect(function()	
-                if LocalCharacter ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen") ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen").Enabled == true and AntiDrown == true then	
-                    LocalCharacter.client.oxygen.Enabled = false	
-                end	
-            end)
-        else	
-            if LocalCharacter ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen") ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen").Enabled == false then	
-                LocalCharacter.client.oxygen.Enabled = true	
-            end	
-        end
     end)
 
     local section = Tabs.Misc:AddSection("Fps Services")
