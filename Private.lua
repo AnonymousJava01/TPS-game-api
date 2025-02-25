@@ -158,7 +158,7 @@ local Tabs = {
     Webhook = Window:AddTab({ Title = "Webhook", Icon = "clock" }),
     Premium = Window:AddTab({ Title = "Premium", Icon = "diamond" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),
-    Misc = Window:AddTab({ Title = "Misc", Icon = "file-text" }),
+    Misc = Window:AddTab({ Title = "Misc", Icon = "file-text" })
 }
 
 local Options = Fluent.Options
