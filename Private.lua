@@ -139,7 +139,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 
 local Window = Fluent:CreateWindow({
     Title = "Fisch | Than Hub",
-    SubTitle = "Private Leaks",
+    SubTitle = "v 0.1 Beta",
     TabWidth = 150,
     Size = UDim2.fromOffset(600, 400),
     Acrylic = true,
@@ -276,7 +276,7 @@ local AutoFish = false
 local autoShake2 = false
 local autoShake3 = false
 local AutoZoneCast = false
-local autoShakeDelay = 0.3
+local autoShakeDelay = 0.000000001
 local autoReel = false
 local AutoCast = false
 local Noclip = false
@@ -837,7 +837,7 @@ do
     local DropdownShake = Tabs.Main:AddDropdown("DropdownShake", {
         Title = "Select Auto Shake Mode:",
         Description = "Mouse - Make sure to hide UI and toggle chat off in order for Auto Shake to work!",
-        Values = {"Mouse", "Phantom"},
+        Values = {"CURSOR", "UI NAV"},
         Multi = false,
         Default = 1,
     })
@@ -850,7 +850,7 @@ do
         Title = "AutoShake Delay",
         Description = "Change the delay between every shake",
         Default = 2,
-        Min = 0.2,
+        Min = 0.000000001,
         Max = 1,
         Rounding = 1,
         Callback = function(Value)
@@ -869,9 +869,9 @@ do
         if AutoCast then
             Pidoras()
         end
-        if ShakeMode == "Mouse" then
+        if ShakeMode == "CURSOR" then
             autoShake = Value
-        elseif ShakeMode == "Phantom" then
+        elseif ShakeMode == "UI NAV" then
             autoShake2 = Value
         end
         AutoFish = Value
