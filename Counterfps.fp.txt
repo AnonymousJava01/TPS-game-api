@@ -3467,33 +3467,6 @@ Tabs.Server:AddButton({
 end
         
 
-local gui = Instance.new("ScreenGui")
-gui.Name = "Gui"
-gui.Parent = game.CoreGui
-
-local button = Instance.new("ImageButton")
-button.Name = "HutaoHub"
-button.Parent = gui 
-button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-button.BorderColor3 = Color3.fromRGB(0, 0, 0)
-button.BorderSizePixel = 0
-button.Position = UDim2.new(0, 10, 0, 10)
-button.Size = UDim2.new(0, 50, 0, 50)
-button.Image = "rbxassetid://17576103507"
-button.ScaleType = Enum.ScaleType.Crop
-
-local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(0, 10)  
-UICorner.Parent = button
-
-local isOpen = false
-local isDraggable = false
-local dragConnection
-
-button.MouseButton1Click:Connect(function()
-        Window:Minimize()
-end)
-
 function setDraggable(draggable)
         if draggable then
             button.Draggable = true 
@@ -3639,53 +3612,53 @@ VisibilityToggle:OnChanged(function(value)
         toggleButtonVisibility(value)
 end)
         
-local selectedTheme = "Darker"  -- Default theme
- 
--- Dropdown to select a theme
-local selectedTheme = "Darker"  --  default  selectedTheme
- 
--- Dropdown to select a theme
-local Dropdown = Tabs.Settings:AddDropdown("Dropdown", {
-    Title = "theme",
-    Values = {"Dark", "Darker", "Light", "Aqua", "Amethyst", "Rose"},
-    Multi = false,
-    Default = 1,
-   Callback = function(selected)
-    selectedTheme = selected
-    Theme = selectedTheme
-    print("Darker" .. Theme)
-end
-})
- 
--- Button to change theme
-Tabs.Settings:AddButton({
-    Title = "Change color)",
-    Description = "Choose a theme and change system colors",
-    Callback = function()
-        -- Change theme according to selected values from Dropdown
-        if selectedTheme == "Darker" then
-            Theme = "Dark"
-        elseif selectedTheme == "Darker" then
-            Theme = "Darker"
-        elseif selectedTheme == "Light" then
-            Theme = "Light"
-        elseif selectedTheme == "Aqua" then
-            Theme = "Aqua"
-        elseif selectedTheme == "Amethyst" then
-            Theme = "Amethyst"
-        elseif selectedTheme == "Rose" then
-            Theme = "Rose"
-        else
-            -- If no values are selected, use the default theme.
-            Theme = "Dark"
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "Gui"
+gui.Parent = game.CoreGui
+
+local button = Instance.new("ImageButton")
+button.Name = "HutaoHub"
+button.Parent = gui 
+button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+button.BorderColor3 = Color3.fromRGB(0, 0, 0)
+button.BorderSizePixel = 0
+button.Position = UDim2.new(0, 10, 0, 10)
+button.Size = UDim2.new(0, 50, 0, 50)
+button.Image = "rbxassetid://17576103507"
+button.ScaleType = Enum.ScaleType.Crop
+
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(0, 10)  
+UICorner.Parent = button
+
+local isOpen = false
+local isDraggable = false
+local dragConnection
+
+button.MouseButton1Click:Connect(function()
+        Window:Minimize()
+end)
+
+   local ToggleAntiDrown = Tabs.Misc:AddToggle("ToggleAntiDrown", {Title = "Infinity Oxygen", Default = false })
+    ToggleAntiDrown:OnChanged(function()
+        AntiDrown = ToggleAntiDrown.Value
+        if AntiDrown == true then
+            if LocalCharacter ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen") ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen").Enabled == true then	
+                LocalCharacter.client.oxygen.Enabled = false	
+            end	
+            CharAddedAntiDrownCon = LocalPlayer.CharacterAdded:Connect(function()	
+                if LocalCharacter ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen") ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen").Enabled == true and AntiDrown == true then	
+                    LocalCharacter.client.oxygen.Enabled = false	
+                end	
+            end)
+        else	
+            if LocalCharacter ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen") ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen").Enabled == false then	
+                LocalCharacter.client.oxygen.Enabled = true	
+            end	
         end
- 
-        -- sample display or change your system theme
-        print("selected theme: " .. Theme)
-    end
-})
-
-
+    end)
+    
 SaveManager:SetLibrary(Fluent)
 InterfaceManager:SetLibrary(Fluent)
 
