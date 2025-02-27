@@ -276,10 +276,10 @@ TitleText.Font = Enum.Font.GothamBold
 TitleText.TextScaled = true
 TitleText.TextStrokeTransparency = 0.2
 TitleText.TextTransparency = 1
-TitleText.TextColor3 = Color3.fromRGB(135, 206, 250) -- Soft Blue Premium
-TitleText.Text = "「ThanHUB」"
+TitleText.TextColor3 = Color3.fromRGB(186, 115, 211) -- Soft Purple Premium
+TitleText.Text = "「ThanHUB」" -- Font khusus
 
--- Subtitle lebih dekat dengan "ThanHUB"
+-- Subtitle lebih dekat dengan "Ancestral"
 local SubtitleText = Instance.new("TextLabel")
 SubtitleText.Parent = ScreenGui
 SubtitleText.Size = GetResponsiveSize(0.08) -- Ukuran lebih kecil
@@ -291,7 +291,7 @@ SubtitleText.TextScaled = true
 SubtitleText.TextStrokeTransparency = 0.2
 SubtitleText.TextTransparency = 1
 SubtitleText.TextColor3 = Color3.fromRGB(220, 220, 220) -- Warna abu-abu premium
-SubtitleText.Text = "Credit @Fearless" -- Ganti teks sesuai keinginan
+SubtitleText.Text = "Credit:@Fearless" -- Ganti teks sesuai keinginan
 
 -- Animasi fade-in
 local fadeInTitle = TweenService:Create(TitleText, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
@@ -335,7 +335,7 @@ end)
 -- Tunggu beberapa detik sebelum teks muncul
 task.delay(3, function() -- Ganti angka 3 dengan durasi yang diinginkan sebelum teks muncul
 local args = {
-    [1] = "<font color='#87CEFA'><i>ThanHUB</i></font> has been loaded!";
+    [1] = "<font color='#BA73D3'><i>ThanHUB</i></font> has been loaded!";
     [3] = 0;
     [4] = game:GetService("ReplicatedStorage"):WaitForChild("resources", 9e9):WaitForChild("sounds", 9e9):WaitForChild("sfx", 9e9):WaitForChild("event", 9e9):WaitForChild("aurora", 9e9);
 }
@@ -388,19 +388,18 @@ UICorner.Parent = MainFrame
 -- Tambahkan UIGradient untuk efek transisi warna
 local Gradient = Instance.new("UIGradient")
 Gradient.Color = ColorSequence.new{
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 128)), -- Navy Blue (atas)
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 255, 255)) -- Aqua Blue (bawah)
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(136, 77, 167)), -- Purple (atas)
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(30, 30, 80))    -- Navy Blue (bawah)
 }
 Gradient.Rotation = 90 -- Gradient dari atas ke bawah
 Gradient.Parent = MainFrame -- Pastikan gradient masuk ke MainFrame
-
 
 -- Ikon di sebelah kiri
 IconLabel.Parent = MainFrame
 IconLabel.BackgroundTransparency = 1
 IconLabel.Size = UDim2.new(0, 24, 0, 24) -- Ukuran sedikit diperbesar
 IconLabel.Position = UDim2.new(0.08, 0, 0.5, -12) -- Letak ikon ditengah vertikal
-IconLabel.Image = "rbxassetid://85779221265543" -- Ganti dengan ID ikon yang sesuai
+IconLabel.Image = "rbxassetid://73407780444753" -- Ganti dengan ID ikon yang sesuai
 IconLabel.ScaleType = Enum.ScaleType.Fit
 
 -- Garis pemisah
@@ -449,11 +448,11 @@ end)
 local Window = Fluent:CreateWindow({
     Title = game:GetService("MarketplaceService"):GetProductInfo(16732694052).Name .."  | ThanHUB v1.0",
     SubTitle = "discord.gg/thanhub",
-    TabWidth = 120, -- Ukuran tab lebih kecil
-    Size = UDim2.fromOffset(420, 350), -- Ukuran lebih kecil untuk HP
+    TabWidth = 160,
+    Size = UDim2.fromOffset(520, 400), -- Ukuran lebih kecil agar lebih responsif
     Acrylic = false,
     Theme = "Aqua",
-    MinimizeKey = Enum.UserInputType.Touch -- Agar bisa minimize di HP
+    MinimizeKey = Enum.KeyCode.LeftControl
 })
 
 -- // // // Services // // // --
@@ -507,37 +506,24 @@ function ShowNotification(String)
     })
 end
 
--- // Sending Execution To Discord // --
-local function GetPlayerStats()
-    local hud = LocalPlayer:FindFirstChild("PlayerGui") and LocalPlayer.PlayerGui:FindFirstChild("hud")
-    if hud and hud.safezone then
-        local coins = hud.safezone:FindFirstChild("coins") and hud.safezone.coins.Text or "N/A"
-        local jobId = game.JobId
-        local joinScript = string.format("game:GetService('TeleportService'):TeleportToPlaceInstance(%d, '%s', game:GetService('Players').LocalPlayer)", game.PlaceId, jobId)
-        return {
-            Username = LocalPlayer.Name,
-            DisplayName = LocalPlayer.DisplayName,
-            Coins = coins,
-            JobId = jobId,
-            JoinScript = joinScript
-        }
-    end
-    return nil
-end
+-- // // // Tabs Gui // // // --
 
-game.Players.LocalPlayer.Idled:Connect(function()
-    VirtualUser:CaptureController()
-    VirtualUser:ClickButton2(Vector2.new())
-end)
+local Tabs = { -- https://lucide.dev/icons/
+    Profile = Window:AddTab({ Title = "Profile", Icon = Players:GetUserThumbnailAsync(LocalPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size100x100)}), 
+    Information = Window:AddTab({ Title = "Information", Icon = "book" }), 
+    Main = Window:AddTab({ Title = "Fishing", Icon = "anchor" }), 
+    -- QuestRod = Window:AddTab({ Title = "Quest Rod", Icon = "target" }), 
+    Shop = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }), 
+    Items = Window:AddTab({ Title = "Selling & Repair", Icon = "hammer" }), 
+    Automatically = Window:AddTab({ Title = "Automatically", Icon = "repeat" }), 
+    Teleports = Window:AddTab({ Title = "Teleports", Icon = "compass" }), 
+    CharacterTab = Window:AddTab({ Title = "Character", Icon = "user" }), 
+    Exclusives = Window:AddTab({ Title = "Exclusives", Icon = "star" }), 
+    Misc = Window:AddTab({ Title = "Misc", Icon = "package" }),
+}
+local Options = Fluent.Options
 
-spawn(function()
-    while true do
-        game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("afk"):FireServer(false)
-        task.wait(0.01)
-    end
-end)
-
--- // Find TpSpots // --
+    -- // Find TpSpots // --
 local TpSpotsFolder = Workspace:FindFirstChild("world"):WaitForChild("spawns"):WaitForChild("TpSpots")
 for i, v in pairs(TpSpotsFolder:GetChildren()) do
     if table.find(teleportSpots, v.Name) == nil then
@@ -545,43 +531,13 @@ for i, v in pairs(TpSpotsFolder:GetChildren()) do
     end
 end
 
--- // // // Get Position // // // --
-function GetPosition()
-    if not game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-        return {
-            Vector3.new(0,0,0),
-            Vector3.new(0,0,0),
-            Vector3.new(0,0,0)
-        }
-    end
-    return {
-        game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.X,
-        game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.Y,
-        game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.Z
-    }
-end
-
-function ExportValue(arg1, arg2)
-    return tonumber(string.format("%."..(arg2 or 1)..'f', arg1))
-end
-
--- // // // Tabs Gui // // // --
-
-local Tabs = { -- https://lucide.dev/icons/
-    Main = Window:AddTab({ Title = "Fishing", Icon = "anchor" }), 
-    Shop = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }), 
-    Items = Window:AddTab({ Title = "Selling & Repair", Icon = "hammer" }), 
-    Teleports = Window:AddTab({ Title = "Teleports", Icon = "compass" }), 
-    CharacterTab = Window:AddTab({ Title = "Character", Icon = "user" }), 
-    Exclusives = Window:AddTab({ Title = "Exclusives", Icon = "star" }), 
-}
-local Options = Fluent.Options
-
     -- // Exclusives Tab // --
     local sectionExclus = Tabs.Exclusives:AddSection("Exclusives Features (SOON)")
     -- // Main Tab // --
+    
     -- // // // Auto Cast // // // --
 local autoCastEnabled = false
+ -- // // // Auto Cast // // // --
 
 -- // // // Auto Shake // // // --
 local autoShakeEnabled = false
@@ -589,47 +545,41 @@ local autoShakeConnection
 
 local function autoShake()
     if ShakeMode == "Navigation" then
+        task.wait()
         xpcall(function()
             local shakeui = PlayerGui:FindFirstChild("shakeui")
             if not shakeui then return end
-
             local safezone = shakeui:FindFirstChild("safezone")
             local button = safezone and safezone:FindFirstChild("button")
-
-            task.wait(0.05) -- Mempercepat jeda waktu
+            task.wait(0.2)
             GuiService.SelectedObject = button
-
             if GuiService.SelectedObject == button then
                 VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Return, false, game)
                 VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Return, false, game)
             end
-
-            task.wait(0.03) -- Mempercepat delay
+            task.wait(0.1)
             GuiService.SelectedObject = nil
-        end, function(err) end)
-
+        end,function (err)
+        end)
     elseif ShakeMode == "Mouse" then
+        task.wait()
         xpcall(function()
             local shakeui = PlayerGui:FindFirstChild("shakeui")
             if not shakeui then return end
-
             local safezone = shakeui:FindFirstChild("safezone")
             local button = safezone and safezone:FindFirstChild("button")
-            if not button then return end
-
             local pos = button.AbsolutePosition
             local size = button.AbsoluteSize
-
-            -- Klik lebih cepat dengan jeda yang lebih pendek
             VirtualInputManager:SendMouseButtonEvent(pos.X + size.X / 2, pos.Y + size.Y / 2, 0, true, LocalPlayer, 0)
             VirtualInputManager:SendMouseButtonEvent(pos.X + size.X / 2, pos.Y + size.Y / 2, 0, false, LocalPlayer, 0)
-        end, function(err) end)
+        end,function (err)
+        end)
     end
 end
 
 local function startAutoShake()
     if autoShakeConnection or not autoShakeEnabled then return end
-    autoShakeConnection = RunService.Heartbeat:Connect(autoShake) -- Menggunakan Heartbeat agar lebih cepat
+    autoShakeConnection = RunService.RenderStepped:Connect(autoShake)
 end
 
 local function stopAutoShake()
@@ -654,6 +604,7 @@ end)
 if autoShakeEnabled and PlayerGui:FindFirstChild("shakeui") and PlayerGui.shakeui:FindFirstChild("safezone") and PlayerGui.shakeui.safezone:FindFirstChild("button") then
     startAutoShake()
 end
+
 -- // // // Auto Reel // // // --
 local autoReelEnabled = false
 local PerfectCatchEnabled = false
@@ -664,32 +615,16 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local PlayerGui = game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui")
 
 -- // // // Zone Cast // // // --
-ZoneConnection = LocalCharacter.ChildAdded:Connect(function(child)
-if ZoneCast and child:IsA("Tool") and FishingZonesFolder:FindFirstChild(Zone) then
-    child.ChildAdded:Connect(function(blehh)
-        if blehh.Name == "bobber" then
-            -- Hapus RopeConstraint agar bobber jatuh langsung
-            local RopeConstraint = blehh:FindFirstChildOfClass("RopeConstraint")
-            if RopeConstraint then
-                RopeConstraint:Destroy()
-            end
+    local section = Tabs.Main:AddSection("Auto Fishing")
 
-            -- Pindahkan bobber langsung ke zona pemancingan
-            blehh.CFrame = FishingZonesFolder[Zone].CFrame
-        end
-    end)
-end
-end)
-
-    local section = Tabs.Main:AddSection("Auto Fishing") 
     -- AutoCastToggle
     local autoCast = Tabs.Main:AddToggle("autoCast", { Title = "Auto Cast", Default = false })
     -- AutoShakeToggle
     local autoShake = Tabs.Main:AddToggle("autoShake", { Title = "Auto Shake", Default = false })
-    -- AUTO REEL 
+
 local autoReelEnabled = false
 local instaReelEnabled = false
-
+-- AUTO RELL LEGIT
 local function StartAutoReel()
     spawn(function()
         while autoReelEnabled do
@@ -711,7 +646,7 @@ local function StartAutoReel()
     end)
 end
 
--- AUTO REEL END
+-- AUTO REEL LEGIT END
     -- AutoreelToggleLegit
     local autoReelToggle = Tabs.Main:AddToggle("autoReel", { Title = "Auto Reel Legit", Default = false })
 autoReelToggle:OnChanged(function()
@@ -720,12 +655,12 @@ autoReelToggle:OnChanged(function()
         task.spawn(StartAutoReel)
     end
 end)
-
 -- INSTAREELCODE
+
 local function StartInstaReel()
     spawn(function()
         while instaReelEnabled do
-            task.wait(0.1)
+            task.wait(2)
             repeat
                 task.wait()
                 local ui = LocalPlayer.PlayerGui:FindFirstChild("reel")
@@ -742,16 +677,17 @@ local function StartInstaReel()
         end
     end)
 end 
+
 -- INSTAREELCODE END
+
 -- instaReelToggle
-local instaReelToggle = Tabs.Main:AddToggle("instaReel", { Title = "Instant Reel", Default = false })
+local instaReelToggle = Tabs.Main:AddToggle("instaReel", { Title = "Fast Reel", Default = false })
 instaReelToggle:OnChanged(function()
     instaReelEnabled = Options.instaReel.Value
     if instaReelEnabled then
         task.spawn(StartInstaReel)
     end
 end) 
-
     -- Atur Delay
     local autoFishSettings = Tabs.Main:AddSection("Auto Fish Settings")
     -- AutoCast
@@ -760,11 +696,10 @@ end)
         Suffix = "s",
         Min = 0,
         Max = 5,
-        Default = 2,
+        Default = 0,
         Rounding = 0.5
     })
     
-
 local function StartAutoFishing()
     spawn(function()
         while autoCastEnabled do
@@ -832,15 +767,6 @@ end)
     -- Auto Shake End
     -- // Mode Tab // --
     local section = Tabs.Main:AddSection("Mode Fishing")
-    local autoCastMode = Tabs.Main:AddDropdown("autoCastMode", {
-        Title = "Auto Cast Mode",
-        Values = {"Legit"},
-        Multi = false,
-        Default = CastMode,
-    })
-    autoCastMode:OnChanged(function(Value)
-        CastMode = Value
-    end)
     local autoShakeMode = Tabs.Main:AddDropdown("autoShakeMode", {
         Title = "Auto Shake Mode",
         Values = {"Navigation"},
