@@ -768,6 +768,37 @@ end)
         ShakeMode = Value
     end)
 
+local Dropdown = Tabs.Main:AddDropdown("WaterZone", {
+    Title = "Select location to Fish",
+    Values = WaterZoneNames,
+    Multi = false,
+    Default = "",
+})
+
+local selectedZone = nil
+Dropdown:OnChanged(function(value)
+    selectedZone = workspace.zones.fishing:FindFirstChild(value)
+end)
+
+
+function refreshWaterZoneNames()
+    WaterZoneNames = {}
+
+    local uniqueZones = {}
+    for _, zone in ipairs(workspace.zones.fishing:GetChildren()) do
+        if not uniqueZones[zone.Name] then
+            table.insert(WaterZoneNames, zone.Name)
+            uniqueZones[zone.Name] = true
+        end
+    end
+
+    Dropdown:SetValues(WaterZoneNames)
+end
+
+refreshWaterZoneNames()
+
+workspace.zones.fishing.ChildAdded:Connect(refreshWaterZoneNames)
+workspace.zones.fishing.ChildRemoved:Connect(refreshWaterZoneNames)
     -- Shop Tab
     local section = Tabs.Shop:AddSection("Shop Feature")
 -- Dropdown untuk Rods
