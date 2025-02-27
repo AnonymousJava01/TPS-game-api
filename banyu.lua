@@ -523,7 +523,7 @@ local Options = Fluent.Options
 
 
     -- // Exclusives Tab // --
-    local sectionExclus = Tabs.Exclusives:AddSection("Exclusives Features (SOON)")
+    
     -- // Main Tab // --
     
     -- // // // Auto Cast // // // --
