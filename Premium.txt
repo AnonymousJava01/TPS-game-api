@@ -528,19 +528,7 @@ end)
     end)
 
     -- Shop Tab
- Tabs.Purchase:AddButton({
-    Title = "Teleport to Coral Geode seller",
-    Description = "",
-    Callback = function()
-        TeleportPlayer(CFrame.new(-1646, -214, -2850))
-    end
-})
-
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local currentCFrame = character:WaitForChild("HumanoidRootPart").CFrame
-
-local EventsSection = Tabs.Purchase:AddSection("Skin Crate Menu")
+  local EventsSection = Tabs.Purchase:AddSection("Skin Crate Menu")
     
 Tabs.Purchase:AddButton({
     Title = "Buy Moosewood Skin Crate",
@@ -578,7 +566,10 @@ game:GetService("ReplicatedStorage").packages.Net:FindFirstChild("RF/SkinCrates/
     end
 })
 
-if getgenv().ancestral then 
-    warn("ThanHUB Hub: Already executed!") 
-    return 
-end
+-- Execute Information
+Window:SelectTab(1)
+Fluent:Notify({
+    Title = "ThanHUB",
+    Content = "Executed!",
+    Duration = 8
+})
