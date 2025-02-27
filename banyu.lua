@@ -399,7 +399,7 @@ IconLabel.Parent = MainFrame
 IconLabel.BackgroundTransparency = 1
 IconLabel.Size = UDim2.new(0, 24, 0, 24) -- Ukuran sedikit diperbesar
 IconLabel.Position = UDim2.new(0.08, 0, 0.5, -12) -- Letak ikon ditengah vertikal
-IconLabel.Image = "rbxassetid://73407780444753" -- Ganti dengan ID ikon yang sesuai
+IconLabel.Image = "rbxassetid://114807128088971" -- Ganti dengan ID ikon yang sesuai
 IconLabel.ScaleType = Enum.ScaleType.Fit
 
 -- Garis pemisah
@@ -425,7 +425,7 @@ ExpandButton.Parent = MainFrame
 ExpandButton.BackgroundTransparency = 1
 ExpandButton.Size = UDim2.new(0, 20, 0, 20) -- Ukuran dikurangi agar tidak keluar frame
 ExpandButton.Position = UDim2.new(0.87, -5, 0.5, -10) -- Digeser lebih ke dalam
-ExpandButton.Image = "rbxassetid://107981980779327" -- Ganti dengan asset ID ikon maximize
+ExpandButton.Image = "rbxassetid://114807128088971" -- Ganti dengan asset ID ikon maximize
 ExpandButton.ScaleType = Enum.ScaleType.Fit -- Mencegah gambar melar
 
 -- Variabel untuk cek status minimize
@@ -438,7 +438,7 @@ ExpandButton.MouseButton1Click:Connect(function()
     game:GetService("VirtualInputManager"):SendKeyEvent(false, "LeftControl", false, game)
 
     if isMinimized then
-        ExpandButton.Image = "rbxassetid://107981980779327" -- Ganti dengan asset ID ikon minimize
+        ExpandButton.Image = "rbxassetid://114807128088971" -- Ganti dengan asset ID ikon minimize
     else
         ExpandButton.Image = "rbxassetid://73064588643892" -- Kembali ke ikon maximize
     end
