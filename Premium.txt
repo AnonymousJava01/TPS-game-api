@@ -374,6 +374,7 @@ local PlayerGui = game:GetService("Players").LocalPlayer:FindFirstChild("PlayerG
 
 local autoReelEnabled = false
 local instaReelEnabled = false
+
 -- AUTO RELL LEGIT
 local function StartAutoReel()
     spawn(function()
@@ -438,6 +439,7 @@ instaReelToggle:OnChanged(function()
         task.spawn(StartInstaReel)
     end
 end) 
+
     -- Atur Delay
     local autoFishSettings = Tabs.Main:AddSection("Auto Fish Settings")
     -- AutoCast
@@ -484,6 +486,7 @@ autoCast:OnChanged(function()
         StartAutoFishing()
     end
 end)
+
 -- AutoCast End
     -- Auto Shake
     local autoShakeDelaySlider = Tabs.Main:AddSlider("autoshakedelay", {
@@ -513,7 +516,8 @@ end)
                 autoShakeEnabled = false
             end
         end)
-    end)    
+    end)
+    
     -- Auto Shake End
     -- // Mode Tab // --
     local section = Tabs.Main:AddSection("Mode Fishing")
@@ -565,6 +569,60 @@ Tabs.Purchase:AddButton({
 game:GetService("ReplicatedStorage").packages.Net:FindFirstChild("RF/SkinCrates/Purchase"):InvokeServer(unpack(args))
     end
 })
+
+Tabs.Purchase:AddButton({
+    Title = "Buy Atlantis Skin Crate",
+    Description = "",
+    Callback = function()
+        local args = {
+    [1] = "Atlantis"
+}
+
+game:GetService("ReplicatedStorage").packages.Net:FindFirstChild("RF/SkinCrates/Purchase"):InvokeServer(unpack(args))
+    end
+})
+
+Tabs.Purchase:AddButton({
+    Title = "Buy Mariana Skin Crate",
+    Description = "",
+    Callback = function()
+        local args = {
+    [1] = "Mariana"
+}
+
+game:GetService("ReplicatedStorage").packages.Net:FindFirstChild("RF/SkinCrates/Purchase"):InvokeServer(unpack(args))
+    end
+})
+
+-- // Character Tab // --
+    local IdentityHiderUI = Tabs.CharacterTab:AddToggle("IdentityHiderUI", {Title = "Protect Identity", Default = false})
+    IdentityHiderUI:OnChanged(function()
+        while Options.IdentityHiderUI.Value == true do
+            -- Update elemen UI dengan warna yang lebih elegan dan tidak mencolok
+            if UserPlayer:FindFirstChild("streak") then
+                UserPlayer.streak.Text = "ThanHUB"
+                UserPlayer.streak.TextColor3 = Color3.fromRGB(180, 180, 180) -- Abu-abu medium, lebih soft
+            end
+            if UserPlayer:FindFirstChild("level") then
+                UserPlayer.level.Text = "ThanHUB"
+                UserPlayer.level.TextColor3 = Color3.fromRGB(140, 140, 220) -- Biru pastel yang lebih kalem
+            end
+            if UserPlayer:FindFirstChild("user") then
+                UserPlayer.user.Text = "ThanHUB Protect"
+                UserPlayer.user.TextColor3 = Color3.fromRGB(160, 160, 160) -- Abu-abu yang lebih seimbang
+            end
+            local hud = LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("hud"):WaitForChild("safezone")
+            if hud:FindFirstChild("coins") then
+                hud.coins.Text = "HIDDEN"
+                hud.coins.TextColor3 = Color3.fromRGB(235, 210, 150) -- Kuning emas lembut, lebih elegan
+            end
+            if hud:FindFirstChild("lvl") then
+                hud.lvl.Text = "ThanHUB MAX"
+                hud.lvl.TextColor3 = Color3.fromRGB(190, 170, 230) -- Ungu pastel lembut
+            end
+            task.wait(0.01)
+        end
+    end)    
 
 -- Execute Information
 Window:SelectTab(1)
