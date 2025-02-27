@@ -509,10 +509,8 @@ end
 -- // // // Tabs Gui // // // --
 
 local Tabs = { -- https://lucide.dev/icons/
-    Profile = Window:AddTab({ Title = "Profile", Icon = Players:GetUserThumbnailAsync(LocalPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size100x100)}), 
-    Information = Window:AddTab({ Title = "Information", Icon = "book" }), 
     Main = Window:AddTab({ Title = "Fishing", Icon = "anchor" }), 
-    -- QuestRod = Window:AddTab({ Title = "Quest Rod", Icon = "target" }), 
+    QuestRod = Window:AddTab({ Title = "Quest Rod", Icon = "target" }), 
     Shop = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }), 
     Items = Window:AddTab({ Title = "Selling & Repair", Icon = "hammer" }), 
     Automatically = Window:AddTab({ Title = "Automatically", Icon = "repeat" }), 
